@@ -16,6 +16,18 @@
 		CEAF048427BEA56F004A4068 /* SearchBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF048327BEA56F004A4068 /* SearchBookTests.swift */; };
 		CEAF048E27BEA56F004A4068 /* SearchBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF048D27BEA56F004A4068 /* SearchBookUITests.swift */; };
 		CEAF049027BEA56F004A4068 /* SearchBookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF048F27BEA56F004A4068 /* SearchBookUITestsLaunchTests.swift */; };
+		CEAF04EB27BECCDB004A4068 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04AA27BEAA8D004A4068 /* NetworkAPI.swift */; };
+		CEAF04EC27BECCEB004A4068 /* ItBookAPIConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04D127BEAD9A004A4068 /* ItBookAPIConnector.swift */; };
+		CEAF04ED27BECCEB004A4068 /* URLSessionConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF049F27BEA8D2004A4068 /* URLSessionConnector.swift */; };
+		CEAF04EE27BECCEB004A4068 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF049D27BEA8C0004A4068 /* NetworkDispatcher.swift */; };
+		CEAF04EF27BECCEB004A4068 /* BooksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04DC27BEAEF7004A4068 /* BooksRequest.swift */; };
+		CEAF04F027BECCEB004A4068 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04D427BEAE33004A4068 /* SearchRequest.swift */; };
+		CEAF04F127BECCEB004A4068 /* ItBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04A727BEAA59004A4068 /* ItBookAPI.swift */; };
+		CEAF04F227BECCEB004A4068 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04E027BEAF7D004A4068 /* SearchResponse.swift */; };
+		CEAF04F327BECCEB004A4068 /* BooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04E227BEAF90004A4068 /* BooksResponse.swift */; };
+		CEAF04F427BECCEB004A4068 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04E527BEB70F004A4068 /* NetworkError.swift */; };
+		CEAF04F527BECCEB004A4068 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04A227BEA92C004A4068 /* NetworkLogger.swift */; };
+		CEAF04F627BECCF1004A4068 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF04C327BEAD46004A4068 /* NetworkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +47,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CEAF04CD27BEAD46004A4068 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CEAF046927BEA56D004A4068 /* SearchBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAF046C27BEA56E004A4068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +74,18 @@
 		CEAF048927BEA56F004A4068 /* SearchBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAF048D27BEA56F004A4068 /* SearchBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookUITests.swift; sourceTree = "<group>"; };
 		CEAF048F27BEA56F004A4068 /* SearchBookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEAF049D27BEA8C0004A4068 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
+		CEAF049F27BEA8D2004A4068 /* URLSessionConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionConnector.swift; sourceTree = "<group>"; };
+		CEAF04A227BEA92C004A4068 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		CEAF04A727BEAA59004A4068 /* ItBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookAPI.swift; sourceTree = "<group>"; };
+		CEAF04AA27BEAA8D004A4068 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		CEAF04C327BEAD46004A4068 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		CEAF04D127BEAD9A004A4068 /* ItBookAPIConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookAPIConnector.swift; sourceTree = "<group>"; };
+		CEAF04D427BEAE33004A4068 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
+		CEAF04DC27BEAEF7004A4068 /* BooksRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRequest.swift; sourceTree = "<group>"; };
+		CEAF04E027BEAF7D004A4068 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		CEAF04E227BEAF90004A4068 /* BooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksResponse.swift; sourceTree = "<group>"; };
+		CEAF04E527BEB70F004A4068 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +139,7 @@
 				CEAF046C27BEA56E004A4068 /* AppDelegate.swift */,
 				CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */,
 				CEAF047027BEA56E004A4068 /* ViewController.swift */,
+				CEAF049C27BEA8AC004A4068 /* Network */,
 				CEAF047227BEA56E004A4068 /* Main.storyboard */,
 				CEAF047527BEA56F004A4068 /* Assets.xcassets */,
 				CEAF047727BEA56F004A4068 /* LaunchScreen.storyboard */,
@@ -114,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				CEAF048327BEA56F004A4068 /* SearchBookTests.swift */,
+				CEAF04C327BEAD46004A4068 /* NetworkTests.swift */,
 			);
 			path = SearchBookTests;
 			sourceTree = "<group>";
@@ -127,6 +166,64 @@
 			path = SearchBookUITests;
 			sourceTree = "<group>";
 		};
+		CEAF049C27BEA8AC004A4068 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF04A927BEAA7F004A4068 /* Protocol */,
+				CEAF04A627BEAA25004A4068 /* ItBook */,
+				CEAF049D27BEA8C0004A4068 /* NetworkDispatcher.swift */,
+				CEAF04A227BEA92C004A4068 /* NetworkLogger.swift */,
+				CEAF04E527BEB70F004A4068 /* NetworkError.swift */,
+				CEAF049F27BEA8D2004A4068 /* URLSessionConnector.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CEAF04A627BEAA25004A4068 /* ItBook */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF04D327BEAE0D004A4068 /* Model */,
+				CEAF04A727BEAA59004A4068 /* ItBookAPI.swift */,
+				CEAF04D127BEAD9A004A4068 /* ItBookAPIConnector.swift */,
+			);
+			path = ItBook;
+			sourceTree = "<group>";
+		};
+		CEAF04A927BEAA7F004A4068 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF04AA27BEAA8D004A4068 /* NetworkAPI.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CEAF04D327BEAE0D004A4068 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF04DF27BEAF70004A4068 /* Response */,
+				CEAF04DE27BEAF68004A4068 /* Request */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEAF04DE27BEAF68004A4068 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF04D427BEAE33004A4068 /* SearchRequest.swift */,
+				CEAF04DC27BEAEF7004A4068 /* BooksRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		CEAF04DF27BEAF70004A4068 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF04E027BEAF7D004A4068 /* SearchResponse.swift */,
+				CEAF04E227BEAF90004A4068 /* BooksResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +234,7 @@
 				CEAF046527BEA56D004A4068 /* Sources */,
 				CEAF046627BEA56D004A4068 /* Frameworks */,
 				CEAF046727BEA56D004A4068 /* Resources */,
+				CEAF04CD27BEAD46004A4068 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,9 +356,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAF04F527BECCEB004A4068 /* NetworkLogger.swift in Sources */,
 				CEAF047127BEA56E004A4068 /* ViewController.swift in Sources */,
 				CEAF046D27BEA56E004A4068 /* AppDelegate.swift in Sources */,
+				CEAF04EC27BECCEB004A4068 /* ItBookAPIConnector.swift in Sources */,
+				CEAF04F327BECCEB004A4068 /* BooksResponse.swift in Sources */,
+				CEAF04EE27BECCEB004A4068 /* NetworkDispatcher.swift in Sources */,
+				CEAF04EF27BECCEB004A4068 /* BooksRequest.swift in Sources */,
 				CEAF046F27BEA56E004A4068 /* SceneDelegate.swift in Sources */,
+				CEAF04F227BECCEB004A4068 /* SearchResponse.swift in Sources */,
+				CEAF04ED27BECCEB004A4068 /* URLSessionConnector.swift in Sources */,
+				CEAF04F027BECCEB004A4068 /* SearchRequest.swift in Sources */,
+				CEAF04F427BECCEB004A4068 /* NetworkError.swift in Sources */,
+				CEAF04F127BECCEB004A4068 /* ItBookAPI.swift in Sources */,
+				CEAF04EB27BECCDB004A4068 /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAF048427BEA56F004A4068 /* SearchBookTests.swift in Sources */,
+				CEAF04F627BECCF1004A4068 /* NetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
