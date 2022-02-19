@@ -10,7 +10,6 @@ import Foundation
 struct BooksResponse: Decodable {
     
     let pages: String
-    let error: String
     let image: String
     let rating: String
     let desc: String

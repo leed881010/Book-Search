@@ -12,17 +12,32 @@ public struct NetworkError: Error {
     public let code: Int
     public let message: String
     
-    init?(error: Error?) {
-        guard let error = error else { return nil }
-        self.code = (error as NSError).code
-        self.message = error.localizedDescription
+    init?(error: Error?, response: URLResponse?, errorResponse: ErrorResponse?) {
+        if let error = error {
+            self.code = (error as NSError).code
+            self.message = error.localizedDescription
+            
+        } else if let errorResponse = errorResponse,
+                  let code = Int(errorResponse.error),
+                  code != 0 {
+            self.code = code
+            self.message = "NetworkResponse include Error"
+            
+        } else if let response = response,
+                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
+                  !(statusCode == 200 || statusCode == 204) {
+            self.code = 0
+            self.message = "NetworkResponse statusCode \(statusCode)"
+            
+        } else {
+            return nil
+        }
     }
     
     init(type: ErrorType) {
         self.code = 0
         self.message = type.message
     }
-    
 }
 
 public extension NetworkError {

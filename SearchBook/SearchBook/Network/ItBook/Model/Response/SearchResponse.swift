@@ -9,7 +9,6 @@ import Foundation
 
 struct SearchResponse: Decodable {
     
-    let error: String
     let total: String
     let page: String
     let books: [SearchBook]
@@ -23,7 +22,6 @@ struct SearchResponse: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.error = try container.decode(String.self, forKey: .error)
         self.total = try container.decode(String.self, forKey: .total)
         self.page = try container.decode(String.self, forKey: .page)
         self.books = try container.decode([SearchBook].self, forKey: .books)

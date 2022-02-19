@@ -21,7 +21,9 @@ final class URLSessionConnector: URLSessionConnectorProtocol {
         URLSession(configuration: .default).dataTask(with: urlRequest) { (data, response, error) in
             NetWorkLogger.printOut(response: response, data: data, error: error)
             result.response = self.decodedData(data, type: T.self)
-            result.error = NetworkError(error: error) 
+            result.error = NetworkError(error: error,
+                                        response: response,
+                                        errorResponse: self.decodedData(data, type: ErrorResponse.self))
             lock.signal()
         }.resume()
         lock.wait()

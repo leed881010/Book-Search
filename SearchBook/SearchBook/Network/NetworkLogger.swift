@@ -13,7 +13,7 @@ final class NetWorkLogger {
         var printStringArray:[String] = []
         printStringArray.append("----------------------------------------------------\n")
         let statusCode = (response as? HTTPURLResponse)?.statusCode
-        let isSuccess = statusCode == 200 || statusCode == 204 ? "🎉 isSuccess" : "🧨 isFailed"
+        let isSuccess = statusCode == 200 || statusCode == 204 ? "🎉 isSuccess" : "🧨 isFailed \(statusCode ?? 0)"
         printStringArray.append("[URLResponse]  \(isSuccess)")
         printStringArray.append("URL) \(response?.url?.absoluteString ?? "")")
         if let error = error {
