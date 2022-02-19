@@ -15,6 +15,12 @@
 		CE2C432827C0AA5400BBF672 /* SearchTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432727C0AA5400BBF672 /* SearchTextFieldViewModel.swift */; };
 		CE2C432B27C0B2C500BBF672 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432A27C0B2C500BBF672 /* Book.swift */; };
 		CE2C432D27C0B82700BBF672 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432C27C0B82700BBF672 /* ErrorResponse.swift */; };
+		CE2C432F27C0DAA900BBF672 /* BookListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432E27C0DAA900BBF672 /* BookListTableViewDelegate.swift */; };
+		CE2C433127C0DACF00BBF672 /* BookListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433027C0DACF00BBF672 /* BookListTableViewDataSource.swift */; };
+		CE2C433427C0E79C00BBF672 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433327C0E79C00BBF672 /* UITableView+.swift */; };
+		CE2C433727C0E7BE00BBF672 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433627C0E7BE00BBF672 /* NibLoadable.swift */; };
+		CE2C433A27C0E84E00BBF672 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433927C0E84E00BBF672 /* BookListTableViewCell.swift */; };
+		CE2C433C27C0EA6B00BBF672 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433B27C0EA6B00BBF672 /* UIImageView+.swift */; };
 		CEAF046D27BEA56E004A4068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF046C27BEA56E004A4068 /* AppDelegate.swift */; };
 		CEAF046F27BEA56E004A4068 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */; };
 		CEAF047127BEA56E004A4068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF047027BEA56E004A4068 /* ViewController.swift */; };
@@ -77,6 +83,12 @@
 		CE2C432727C0AA5400BBF672 /* SearchTextFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextFieldViewModel.swift; sourceTree = "<group>"; };
 		CE2C432A27C0B2C500BBF672 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		CE2C432C27C0B82700BBF672 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		CE2C432E27C0DAA900BBF672 /* BookListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewDelegate.swift; sourceTree = "<group>"; };
+		CE2C433027C0DACF00BBF672 /* BookListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewDataSource.swift; sourceTree = "<group>"; };
+		CE2C433327C0E79C00BBF672 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		CE2C433627C0E7BE00BBF672 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		CE2C433927C0E84E00BBF672 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
+		CE2C433B27C0EA6B00BBF672 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		CEAF046927BEA56D004A4068 /* SearchBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAF046C27BEA56E004A4068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +167,9 @@
 				CE2C432327C0995300BBF672 /* SearchControllerViewModel.swift */,
 				CE2C432527C0AA4A00BBF672 /* SearchTextField.swift */,
 				CE2C432727C0AA5400BBF672 /* SearchTextFieldViewModel.swift */,
+				CE2C432E27C0DAA900BBF672 /* BookListTableViewDelegate.swift */,
+				CE2C433027C0DACF00BBF672 /* BookListTableViewDataSource.swift */,
+				CE2C433927C0E84E00BBF672 /* BookListTableViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -165,6 +180,23 @@
 				CE2C432A27C0B2C500BBF672 /* Book.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CE2C433227C0E78C00BBF672 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE2C433327C0E79C00BBF672 /* UITableView+.swift */,
+				CE2C433B27C0EA6B00BBF672 /* UIImageView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE2C433527C0E7AB00BBF672 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE2C433627C0E7BE00BBF672 /* NibLoadable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CEAF046027BEA56D004A4068 = {
@@ -190,6 +222,8 @@
 		CEAF046B27BEA56D004A4068 /* SearchBook */ = {
 			isa = PBXGroup;
 			children = (
+				CE2C433527C0E7AB00BBF672 /* Protocols */,
+				CE2C433227C0E78C00BBF672 /* Extension */,
 				CE2C431A27C0980E00BBF672 /* Views */,
 				CEAF046C27BEA56E004A4068 /* AppDelegate.swift */,
 				CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */,
@@ -423,13 +457,19 @@
 				CEAF046F27BEA56E004A4068 /* SceneDelegate.swift in Sources */,
 				CE2C431D27C0987100BBF672 /* BaseNavigationController.swift in Sources */,
 				CE2C432627C0AA4A00BBF672 /* SearchTextField.swift in Sources */,
+				CE2C433727C0E7BE00BBF672 /* NibLoadable.swift in Sources */,
 				CEAF04F227BECCEB004A4068 /* SearchResponse.swift in Sources */,
+				CE2C433A27C0E84E00BBF672 /* BookListTableViewCell.swift in Sources */,
 				CEAF04ED27BECCEB004A4068 /* URLSessionConnector.swift in Sources */,
 				CEAF04F027BECCEB004A4068 /* SearchRequest.swift in Sources */,
+				CE2C433C27C0EA6B00BBF672 /* UIImageView+.swift in Sources */,
 				CEAF04F427BECCEB004A4068 /* NetworkError.swift in Sources */,
 				CEAF04F127BECCEB004A4068 /* ItBookAPI.swift in Sources */,
 				CE2C432827C0AA5400BBF672 /* SearchTextFieldViewModel.swift in Sources */,
 				CEAF04EB27BECCDB004A4068 /* NetworkAPI.swift in Sources */,
+				CE2C433427C0E79C00BBF672 /* UITableView+.swift in Sources */,
+				CE2C432F27C0DAA900BBF672 /* BookListTableViewDelegate.swift in Sources */,
+				CE2C433127C0DACF00BBF672 /* BookListTableViewDataSource.swift in Sources */,
 				CE2C432B27C0B2C500BBF672 /* Book.swift in Sources */,
 				CE2C432D27C0B82700BBF672 /* ErrorResponse.swift in Sources */,
 				CE2C432427C0995300BBF672 /* SearchControllerViewModel.swift in Sources */,
