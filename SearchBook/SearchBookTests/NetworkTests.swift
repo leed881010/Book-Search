@@ -67,4 +67,20 @@ class NetworkTests: XCTestCase {
         XCTAssertNil(networkError)
     }
 
+    
+    func testBooksAPICallGetsError() throws {
+        let booksRequest: BooksReqeust = .init(isbn13: "failCase")
+        var booksResponse: BooksResponse?
+        var networkError: NetworkError?
+        let promise = expectation(description: "Complete")
+        self.itBookAPIConnector.books(request: booksRequest) { response, error in
+            booksResponse = response
+            networkError = error
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        XCTAssertNil(booksResponse)
+        XCTAssertNotNil(networkError)
+    }
+
 }
