@@ -12,15 +12,15 @@ protocol BookListTableViewModel: AnyObject {
     var numberOfRows: Int { get }
     var heightForRow: CGFloat { get }
     
-    func book(for indexPath: IndexPath) -> Book
+    func book(for indexPath: IndexPath) -> SearchedBook
     func didSelectRow(at indexPath: IndexPath)
     func willDisplay(forRowAt indexPath: IndexPath)
 }
 
 protocol SearchControllerViewModelProtocol: AnyObject {
     
-    var booksHandler: (([Book]) -> Void)? { get }
-    func bind(books handler: @escaping ([Book]) -> Void)
+    var booksHandler: (([SearchedBook]) -> Void)? { get }
+    func bind(books handler: @escaping ([SearchedBook]) -> Void)
 }
 
 final class SearchControllerViewModel {
@@ -32,15 +32,15 @@ final class SearchControllerViewModel {
     }
     
     private var itbookAPIConnector: ItBookAPIConnectorProtocol { NetworkDispatcher.shared.itbookAPIConnector }
-    private var books: [Book] = []
-    private(set) var booksHandler: (([Book]) -> Void)?
+    private var books: [SearchedBook] = []
+    private(set) var booksHandler: (([SearchedBook]) -> Void)?
     private(set) var pushableHandler: ((BaseNavigationViewModel.Pushable) -> Void)?
     private let searchFactorUpdater: SearchFactorUpdater = .init()
 }
 
 private extension SearchControllerViewModel {
     
-    func update(newBooks: [Book]) {
+    func update(newBooks: [SearchedBook]) {
         self.books.append(contentsOf: newBooks)
         self.booksHandler?(self.books)
     }
@@ -51,7 +51,7 @@ private extension SearchControllerViewModel {
                 if let error = error {
                     print("error: \(error.message)")
                 } else if let response = response {
-                    let books = response.books.compactMap { Book(searchBook: $0) }
+                    let books = response.books.compactMap { SearchedBook(searchBook: $0) }
                     books.isEmpty ? self?.searchFactorUpdater.update(isLast: true) : self?.update(newBooks: books)
                 }
             }
@@ -90,7 +90,7 @@ extension SearchControllerViewModel: BookListTableViewModel {
     var numberOfRows: Int { self.books.count }
     var heightForRow: CGFloat { 120.0 }
     
-    func book(for indexPath: IndexPath) -> Book {
+    func book(for indexPath: IndexPath) -> SearchedBook {
         return self.books[indexPath.row]
     }
     
@@ -109,7 +109,7 @@ extension SearchControllerViewModel: BookListTableViewModel {
 
 extension SearchControllerViewModel: SearchControllerViewModelProtocol {
     
-    func bind(books handler: @escaping ([Book]) -> Void) { self.booksHandler = handler }
+    func bind(books handler: @escaping ([SearchedBook]) -> Void) { self.booksHandler = handler }
 }
 
 extension SearchControllerViewModel: BaseNavigationPushableProtocol {

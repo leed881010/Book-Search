@@ -130,6 +130,6 @@ private extension BookListTableViewCell {
 extension BookListTableViewCell {
     
     struct LayoutFactor {
-        var book: Book
+        var book: SearchedBook
     }
 }

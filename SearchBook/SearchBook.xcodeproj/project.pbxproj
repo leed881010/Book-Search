@@ -13,7 +13,7 @@
 		CE2C432427C0995300BBF672 /* SearchControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432327C0995300BBF672 /* SearchControllerViewModel.swift */; };
 		CE2C432627C0AA4A00BBF672 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432527C0AA4A00BBF672 /* SearchTextField.swift */; };
 		CE2C432827C0AA5400BBF672 /* SearchTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432727C0AA5400BBF672 /* SearchTextFieldViewModel.swift */; };
-		CE2C432B27C0B2C500BBF672 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432A27C0B2C500BBF672 /* Book.swift */; };
+		CE2C432B27C0B2C500BBF672 /* SearchedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432A27C0B2C500BBF672 /* SearchedBook.swift */; };
 		CE2C432D27C0B82700BBF672 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432C27C0B82700BBF672 /* ErrorResponse.swift */; };
 		CE2C432F27C0DAA900BBF672 /* BookListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C432E27C0DAA900BBF672 /* BookListTableViewDelegate.swift */; };
 		CE2C433127C0DACF00BBF672 /* BookListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433027C0DACF00BBF672 /* BookListTableViewDataSource.swift */; };
@@ -85,7 +85,7 @@
 		CE2C432327C0995300BBF672 /* SearchControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerViewModel.swift; sourceTree = "<group>"; };
 		CE2C432527C0AA4A00BBF672 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		CE2C432727C0AA5400BBF672 /* SearchTextFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextFieldViewModel.swift; sourceTree = "<group>"; };
-		CE2C432A27C0B2C500BBF672 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		CE2C432A27C0B2C500BBF672 /* SearchedBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBook.swift; sourceTree = "<group>"; };
 		CE2C432C27C0B82700BBF672 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		CE2C432E27C0DAA900BBF672 /* BookListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewDelegate.swift; sourceTree = "<group>"; };
 		CE2C433027C0DACF00BBF672 /* BookListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		CE2C432927C0AEDF00BBF672 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE2C432A27C0B2C500BBF672 /* Book.swift */,
+				CE2C432A27C0B2C500BBF672 /* SearchedBook.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +213,7 @@
 		CE2C433F27C120E400BBF672 /* Book */ = {
 			isa = PBXGroup;
 			children = (
+				CE2C434727C12CEE00BBF672 /* New Group */,
 				CE2C434027C120F700BBF672 /* BookViewController.swift */,
 				CE2C434227C1212700BBF672 /* BookControllerViewModel.swift */,
 			);
@@ -225,6 +226,13 @@
 				CE2C434527C1220B00BBF672 /* BaseNavigationProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CE2C434727C12CEE00BBF672 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		CEAF046027BEA56D004A4068 = {
@@ -501,7 +509,7 @@
 				CE2C433427C0E79C00BBF672 /* UITableView+.swift in Sources */,
 				CE2C432F27C0DAA900BBF672 /* BookListTableViewDelegate.swift in Sources */,
 				CE2C433127C0DACF00BBF672 /* BookListTableViewDataSource.swift in Sources */,
-				CE2C432B27C0B2C500BBF672 /* Book.swift in Sources */,
+				CE2C432B27C0B2C500BBF672 /* SearchedBook.swift in Sources */,
 				CE2C432D27C0B82700BBF672 /* ErrorResponse.swift in Sources */,
 				CE2C434127C120F700BBF672 /* BookViewController.swift in Sources */,
 				CE2C432427C0995300BBF672 /* SearchControllerViewModel.swift in Sources */,
