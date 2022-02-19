@@ -39,8 +39,8 @@ extension SearchFactorUpdater: SearchFactorUpdaterProtocol {
     
     func update(query: String) {
         self.query = query
-        self.page = 1
         self.isLast = false
+        self.page = 1
     }
     
     func update(isLast: Bool) {

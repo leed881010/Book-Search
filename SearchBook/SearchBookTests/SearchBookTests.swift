@@ -38,6 +38,18 @@ class SearchBookTests: XCTestCase {
         XCTAssertNotNil(result)
     }
     
+    func testSearchWithEmptyStringGetsEmptyArray() {
+        var result: [SearchedBook] = []
+        let promise = expectation(description: "Complete")
+        self.searchControllerViewModel.bind(books: {
+            result = $0
+            promise.fulfill()
+        })
+        self.searchTextFieldViewModel.action(.search(""))
+        wait(for: [promise], timeout: 5)
+        XCTAssertEqual(result, [])
+    }
+    
     func testSearchFactorUpdaterNextGetsReqeust() {
         let searchFactorUpdator: SearchFactorUpdater = .init()
         var searchRequest: SearchRequest?
@@ -61,6 +73,20 @@ class SearchBookTests: XCTestCase {
         })
         searchFactorUpdator.update(isLast: true)
         searchFactorUpdator.next()
+        wait(for: [promise], timeout: 5)
+        XCTAssertNil(searchRequest)
+    }
+    
+    func testSearchFactorUpdaterUpdateQueryIfIsLastGetsRequestNotNil() {
+        let searchFactorUpdator: SearchFactorUpdater = .init()
+        var searchRequest: SearchRequest?
+        let promise = expectation(description: "Complete")
+        searchFactorUpdator.bind(searchRequest: {
+            searchRequest = $0
+            promise.fulfill()
+        })
+        searchFactorUpdator.update(isLast: true)
+        searchFactorUpdator.update(query: "test")
         wait(for: [promise], timeout: 5)
         XCTAssertNil(searchRequest)
     }
@@ -91,5 +117,18 @@ class SearchBookTests: XCTestCase {
         XCTAssertNotNil(memoryCachedImage)
     }
     
+    func testBookControllerVMFetchInitiaDataGetsBook() {
+        let bookControllerViewModel: BookControllerViewModelProtocol = BookControllerViewModel(initalData: .init(isbn13: "9780131495050"))
+        let promise = expectation(description: "Complete")
+        
+        var book: Book?
+        bookControllerViewModel.bind(book: {
+            book = $0
+            promise.fulfill()
+        })
+        bookControllerViewModel.fetchInitialData()
+        wait(for: [promise], timeout: 10)
+        XCTAssertNotNil(book)
+    }
     
 }
