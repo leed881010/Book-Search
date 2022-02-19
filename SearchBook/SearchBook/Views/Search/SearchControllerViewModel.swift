@@ -45,6 +45,11 @@ private extension SearchControllerViewModel {
         self.booksHandler?(self.books)
     }
     
+    func removeBooks() {
+        self.books.removeAll()
+        self.booksHandler?(self.books)
+    }
+    
     func fetch(search request: SearchRequest) {
         DispatchQueue.global(qos: .background).async {
             self.itbookAPIConnector.search(request: request) { [weak self] response, error in
@@ -53,6 +58,8 @@ private extension SearchControllerViewModel {
                 } else if let response = response {
                     let books = response.books.compactMap { SearchedBook(searchBook: $0) }
                     books.isEmpty ? self?.searchFactorUpdater.update(isLast: true) : self?.update(newBooks: books)
+                } else {
+                    self?.removeBooks()
                 }
             }
         }
