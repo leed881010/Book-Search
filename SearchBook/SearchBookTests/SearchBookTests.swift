@@ -10,19 +10,19 @@ import XCTest
 
 class SearchBookTests: XCTestCase {
 
-    var searchControllerViewModel: SearchControllerViewModel!
+    var searchControllerViewModelProtocol: SearchControllerViewModelProtocol!
     var searchTextFieldViewModel: SearchTextFieldViewModelProtocol!
     
     override func setUpWithError() throws {
         let controllerViewModel = SearchControllerViewModel()
-        self.searchControllerViewModel = controllerViewModel
+        self.searchControllerViewModelProtocol = controllerViewModel
         self.searchTextFieldViewModel = controllerViewModel.searchTextFieldViewModel
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        self.searchControllerViewModel = nil
+        self.searchControllerViewModelProtocol = nil
         self.searchTextFieldViewModel = nil
     }
 
@@ -41,15 +41,27 @@ class SearchBookTests: XCTestCase {
         }
     }
 
-    func testQueryWithBindingGetsNotNil() {
+    func testQueryWithBindingGetsBooks() {
         var result: [Book] = []
         let promise = expectation(description: "Complete")
-        self.searchControllerViewModel.bind { books in
-            result = books
+        self.searchControllerViewModelProtocol.bind(newBooks: {
+            result = $0
             promise.fulfill()
-        }
+        })
         self.searchTextFieldViewModel.action(.search("test"))
         wait(for: [promise], timeout: 5)
         XCTAssertNotNil(result)
+    }
+    
+    func testNewQueryWithBindingGetsIsNewTrue() {
+        var isNew: Bool = false
+        let promise = expectation(description: "Complete")
+        self.searchControllerViewModelProtocol.bind(newSearchFactor: {
+            isNew = $0.isNew
+            promise.fulfill()
+        })
+        self.searchTextFieldViewModel.action(.search("test"))
+        wait(for: [promise], timeout: 5)
+        XCTAssertTrue(isNew)
     }
 }
