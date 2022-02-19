@@ -38,7 +38,7 @@ class NetworkTests: XCTestCase {
     }
     
     func testSearchAPICallGetsComplete() throws {
-        let searchRequest: SearchRequest = .init(query: "test", page: 0)
+        let searchRequest: SearchRequest = .init(query: "test", page: 1)
         var searchResponse: SearchResponse?
         var networkError: NetworkError?
         let promise = expectation(description: "Complete")
