@@ -37,28 +37,18 @@ final class SearchViewController: UIViewController {
     private let tableViewDelegate: BookListTableViewDelegate
     private let tableViewDataSource: BookListTableViewDataSource
 }
-private extension SearchViewController {
-    
-    func insert(newBooks: [Book]) {
-        let lastIndexRow = self.tableView.numberOfRows(inSection: 0)
-        let newIndexPaths = newBooks.indices.map { IndexPath(row: $0 + lastIndexRow, section: 0) }
-        self.tableView.insertRows(at: newIndexPaths, with: .automatic)
-    }
-}
+
 
 private extension SearchViewController {
     
     func bind() {
-        self.viewModel.bind(newBooks: self.receive(newBooks:))
-        self.viewModel.bind(newSearchFactor: self.receive(newSearchFactor:))
+        self.viewModel.bind(books: self.receive(books:))
     }
     
-    func receive(newBooks: [Book]) {
-        self.tableView.performBatchUpdates { [weak self] in self?.insert(newBooks: newBooks) }
-    }
-    
-    func receive(newSearchFactor: SearchControllerViewModel.SearchFactor) {
-        self.tableView.reloadData()
+    func receive(books: [Book]) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
