@@ -32,36 +32,27 @@ final class SearchControllerViewModel {
     }
     
     private var itbookAPIConnector: ItBookAPIConnectorProtocol { NetworkDispatcher.shared.itbookAPIConnector }
-    private var searchFactor: SearchFactor? {
-        didSet {
-            self.searchFactor.map { self.didUpdate(searchFactor: $0) }
-        }
-    }
-    
-    
     private var books: [Book] = []
     private(set) var booksHandler: (([Book]) -> Void)?
+    
+    private let searchFactorUpdater: SearchFactorUpdater = .init()
 }
 
 private extension SearchControllerViewModel {
     
-    func didUpdate(searchFactor: SearchFactor) {
-        if searchFactor.isNew {
-            self.books.removeAll()
-        }
-        self.search(factor: searchFactor)
+    func update(newBooks: [Book]) {
+        self.books.append(contentsOf: newBooks)
+        self.booksHandler?(self.books)
     }
     
-    func search(factor: SearchFactor) {
-        let searchRequest: SearchRequest = .init(searchFactor: factor)
+    func fetch(search request: SearchRequest) {
         DispatchQueue.global(qos: .background).async {
-            self.itbookAPIConnector.search(request: searchRequest) { [weak self] response, error in
+            self.itbookAPIConnector.search(request: request) { [weak self] response, error in
                 if let error = error {
-                    
+                    print("error: \(error.message)")
                 } else if let response = response {
                     let books = response.books.compactMap { Book(searchBook: $0) }
-                    self?.books.append(contentsOf: books)
-                    self?.booksHandler?(books)
+                    books.isEmpty ? self?.searchFactorUpdater.update(isLast: true) : self?.update(newBooks: books)
                 }
             }
         }
@@ -71,6 +62,7 @@ private extension SearchControllerViewModel {
 private extension SearchControllerViewModel {
     
     func bind() {
+        self.bind(searchFactorUpdater: self.searchFactorUpdater)
         self.bind(querySearchable: self.searchTextFieldViewModel)
     }
     
@@ -78,8 +70,17 @@ private extension SearchControllerViewModel {
         querySearchable.bind(query: self.receive(query:))
     }
     
+    func bind(searchFactorUpdater: SearchFactorUpdaterProtocol) {
+        searchFactorUpdater.bind(searchRequest: self.receive(searchRequest:))
+    }
+    
+    func receive(searchRequest: SearchRequest?) {
+        searchRequest.map { self.fetch(search: $0) }
+    }
+    
     func receive(query: String) {
-        self.searchFactor = SearchFactor(query: query)
+        self.books.removeAll()
+        self.searchFactorUpdater.update(query: query)
     }
     
 }
@@ -98,11 +99,8 @@ extension SearchControllerViewModel: BookListTableViewModel {
     }
     
     func willDisplay(forRowAt indexPath: IndexPath) {
-        guard indexPath.row + 1 == self.books.count,
-              let searchFactor = self.searchFactor else { return }
-        
-        searchFactor.next()
-        self.didUpdate(searchFactor: searchFactor)
+        guard indexPath.row + 1 == self.books.count else { return }
+        self.searchFactorUpdater.next()
     }
 }
 
@@ -110,23 +108,4 @@ extension SearchControllerViewModel: BookListTableViewModel {
 extension SearchControllerViewModel: SearchControllerViewModelProtocol {
     
     func bind(books handler: @escaping ([Book]) -> Void) { self.booksHandler = handler }
-}
-
-extension SearchControllerViewModel {
-    
-    class SearchFactor {
-        
-        let query: String
-        var page: Int
-        var isNew: Bool { return self.page == 1}
-        
-        init(query: String) {
-            self.query = query
-            self.page = 1
-        }
-        
-        func next() {
-            self.page += 1
-        }
-    }
 }

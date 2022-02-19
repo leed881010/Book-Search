@@ -34,7 +34,7 @@ final class SearchTextField: UIView {
 private extension SearchTextField {
     
     func setupView() {
-        self.backgroundColor = .white
+        self.backgroundColor = .lightGray
         [self.textField].forEach {
             self.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false

@@ -21,6 +21,7 @@
 		CE2C433727C0E7BE00BBF672 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433627C0E7BE00BBF672 /* NibLoadable.swift */; };
 		CE2C433A27C0E84E00BBF672 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433927C0E84E00BBF672 /* BookListTableViewCell.swift */; };
 		CE2C433C27C0EA6B00BBF672 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433B27C0EA6B00BBF672 /* UIImageView+.swift */; };
+		CE2C433E27C1158400BBF672 /* SearchFactorUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C433D27C1158400BBF672 /* SearchFactorUpdater.swift */; };
 		CEAF046D27BEA56E004A4068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF046C27BEA56E004A4068 /* AppDelegate.swift */; };
 		CEAF046F27BEA56E004A4068 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */; };
 		CEAF047127BEA56E004A4068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF047027BEA56E004A4068 /* ViewController.swift */; };
@@ -89,6 +90,7 @@
 		CE2C433627C0E7BE00BBF672 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		CE2C433927C0E84E00BBF672 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
 		CE2C433B27C0EA6B00BBF672 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		CE2C433D27C1158400BBF672 /* SearchFactorUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFactorUpdater.swift; sourceTree = "<group>"; };
 		CEAF046927BEA56D004A4068 /* SearchBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAF046C27BEA56E004A4068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				CE2C432927C0AEDF00BBF672 /* Model */,
 				CE2C432127C0994500BBF672 /* SearchViewController.swift */,
 				CE2C432327C0995300BBF672 /* SearchControllerViewModel.swift */,
+				CE2C433D27C1158400BBF672 /* SearchFactorUpdater.swift */,
 				CE2C432527C0AA4A00BBF672 /* SearchTextField.swift */,
 				CE2C432727C0AA5400BBF672 /* SearchTextFieldViewModel.swift */,
 				CE2C432E27C0DAA900BBF672 /* BookListTableViewDelegate.swift */,
@@ -454,6 +457,7 @@
 				CEAF04F327BECCEB004A4068 /* BooksResponse.swift in Sources */,
 				CEAF04EE27BECCEB004A4068 /* NetworkDispatcher.swift in Sources */,
 				CEAF04EF27BECCEB004A4068 /* BooksRequest.swift in Sources */,
+				CE2C433E27C1158400BBF672 /* SearchFactorUpdater.swift in Sources */,
 				CEAF046F27BEA56E004A4068 /* SceneDelegate.swift in Sources */,
 				CE2C431D27C0987100BBF672 /* BaseNavigationController.swift in Sources */,
 				CE2C432627C0AA4A00BBF672 /* SearchTextField.swift in Sources */,

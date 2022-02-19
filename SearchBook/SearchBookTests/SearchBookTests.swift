@@ -10,41 +10,26 @@ import XCTest
 
 class SearchBookTests: XCTestCase {
 
-    var searchControllerViewModelProtocol: SearchControllerViewModelProtocol!
-    var searchTextFieldViewModel: SearchTextFieldViewModelProtocol!
+    var searchControllerViewModel: SearchControllerViewModel!
+    var searchTextFieldViewModel: SearchTextFieldViewModel!
     
     override func setUpWithError() throws {
         let controllerViewModel = SearchControllerViewModel()
-        self.searchControllerViewModelProtocol = controllerViewModel
+        self.searchControllerViewModel = controllerViewModel
         self.searchTextFieldViewModel = controllerViewModel.searchTextFieldViewModel
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        self.searchControllerViewModelProtocol = nil
+        self.searchControllerViewModel = nil
         self.searchTextFieldViewModel = nil
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
     func testQueryWithBindingGetsBooks() {
         var result: [Book] = []
         let promise = expectation(description: "Complete")
-        self.searchControllerViewModelProtocol.bind(books: {
+        self.searchControllerViewModel.bind(books: {
             result = $0
             promise.fulfill()
         })
@@ -52,5 +37,33 @@ class SearchBookTests: XCTestCase {
         wait(for: [promise], timeout: 5)
         XCTAssertNotNil(result)
     }
+    
+    func testSearchFactorUpdaterNextGetsReqeust() {
+        let searchFactorUpdator: SearchFactorUpdater = .init()
+        var searchRequest: SearchRequest?
+        let promise = expectation(description: "Complete")
+        searchFactorUpdator.bind(searchRequest: {
+            searchRequest = $0
+            promise.fulfill()
+        })
+        searchFactorUpdator.next()
+        wait(for: [promise], timeout: 5)
+        XCTAssertEqual(searchRequest?.page, 2)
+    }
+    
+    func testSearchFactorUpdaterIsLastGetsRequestNil() {
+        let searchFactorUpdator: SearchFactorUpdater = .init()
+        var searchRequest: SearchRequest?
+        let promise = expectation(description: "Complete")
+        searchFactorUpdator.bind(searchRequest: {
+            searchRequest = $0
+            promise.fulfill()
+        })
+        searchFactorUpdator.update(isLast: true)
+        searchFactorUpdator.next()
+        wait(for: [promise], timeout: 5)
+        XCTAssertNil(searchRequest)
+    }
+    
     
 }
