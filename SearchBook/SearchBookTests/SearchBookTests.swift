@@ -27,7 +27,7 @@ class SearchBookTests: XCTestCase {
     }
 
     func testQueryWithBindingGetsBooks() {
-        var result: [Book] = []
+        var result: [SearchedBook] = []
         let promise = expectation(description: "Complete")
         self.searchControllerViewModel.bind(books: {
             result = $0

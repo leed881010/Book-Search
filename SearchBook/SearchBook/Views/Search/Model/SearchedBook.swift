@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Book: NSObject {
+class SearchedBook: NSObject {
     
     let imageURL: URL
     let isbn13: String

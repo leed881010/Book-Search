@@ -45,7 +45,7 @@ private extension SearchViewController {
         self.viewModel.bind(books: self.receive(books:))
     }
     
-    func receive(books: [Book]) {
+    func receive(books: [SearchedBook]) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
