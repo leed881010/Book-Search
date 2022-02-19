@@ -26,6 +26,7 @@
 		CE2C434327C1212700BBF672 /* BookControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C434227C1212700BBF672 /* BookControllerViewModel.swift */; };
 		CE2C434627C1220B00BBF672 /* BaseNavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C434527C1220B00BBF672 /* BaseNavigationProtocol.swift */; };
 		CE2C434927C12D5600BBF672 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C434827C12D5600BBF672 /* Book.swift */; };
+		CE2C434C27C138F600BBF672 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C434B27C138F600BBF672 /* ImageCacheManager.swift */; };
 		CEAF046D27BEA56E004A4068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF046C27BEA56E004A4068 /* AppDelegate.swift */; };
 		CEAF046F27BEA56E004A4068 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */; };
 		CEAF047127BEA56E004A4068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF047027BEA56E004A4068 /* ViewController.swift */; };
@@ -99,6 +100,7 @@
 		CE2C434227C1212700BBF672 /* BookControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookControllerViewModel.swift; sourceTree = "<group>"; };
 		CE2C434527C1220B00BBF672 /* BaseNavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationProtocol.swift; sourceTree = "<group>"; };
 		CE2C434827C12D5600BBF672 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		CE2C434B27C138F600BBF672 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		CEAF046927BEA56D004A4068 /* SearchBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAF046C27BEA56E004A4068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CE2C434A27C1387E00BBF672 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				CE2C434B27C138F600BBF672 /* ImageCacheManager.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
 		CEAF046027BEA56D004A4068 = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +277,7 @@
 				CEAF046C27BEA56E004A4068 /* AppDelegate.swift */,
 				CEAF046E27BEA56E004A4068 /* SceneDelegate.swift */,
 				CEAF047027BEA56E004A4068 /* ViewController.swift */,
+				CE2C434A27C1387E00BBF672 /* ImageCache */,
 				CEAF049C27BEA8AC004A4068 /* Network */,
 				CEAF047227BEA56E004A4068 /* Main.storyboard */,
 				CEAF047527BEA56F004A4068 /* Assets.xcassets */,
@@ -489,6 +500,7 @@
 				CEAF047127BEA56E004A4068 /* ViewController.swift in Sources */,
 				CEAF046D27BEA56E004A4068 /* AppDelegate.swift in Sources */,
 				CE2C432227C0994500BBF672 /* SearchViewController.swift in Sources */,
+				CE2C434C27C138F600BBF672 /* ImageCacheManager.swift in Sources */,
 				CEAF04EC27BECCEB004A4068 /* ItBookAPIConnector.swift in Sources */,
 				CEAF04F327BECCEB004A4068 /* BooksResponse.swift in Sources */,
 				CEAF04EE27BECCEB004A4068 /* NetworkDispatcher.swift in Sources */,

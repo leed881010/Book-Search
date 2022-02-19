@@ -65,5 +65,31 @@ class SearchBookTests: XCTestCase {
         XCTAssertNil(searchRequest)
     }
     
+    func testCacheImageGetsImage() {
+        let cacheManager: ImageCacheManager = .init()
+        let url = URL(string: "https://itbook.store/img/books/9781484272541.png")!
+        let promise = expectation(description: "Complete")
+        
+        var memoryCachedImage: UIImage?
+        var discCachedImage: UIImage?
+        var resultImage: UIImage?
+        
+        DispatchQueue.global(qos: .background).async {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let image = data.flatMap ({ UIImage(data: $0) }) {
+                    resultImage = image
+                    cacheManager.set(image: image, for: url)
+                }
+                memoryCachedImage = cacheManager.get(memory: url)
+                discCachedImage = cacheManager.get(disk: url)
+                promise.fulfill()
+            }.resume()
+        }
+        wait(for: [promise], timeout: 10)
+        XCTAssertNotNil(resultImage)
+        XCTAssertNotNil(discCachedImage)
+        XCTAssertNotNil(memoryCachedImage)
+    }
+    
     
 }

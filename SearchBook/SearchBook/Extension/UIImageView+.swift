@@ -14,11 +14,17 @@ extension UIImageView {
             self.image = nil
             return
         }
+        let cacheManager: ImageCacheManagerProtocol = ImageCacheManager.shared
+        if let cachedImage = cacheManager.get(for: imageURL) {
+            self.image = cachedImage
+        }
+        
         placeHolderImage.map { self.image = $0 }
         DispatchQueue.global(qos: .background).async {
             URLSession.shared.dataTask(with: imageURL) { data, response, error in
                 DispatchQueue.main.async {
-                    if let image = data.map({ UIImage(data: $0) }) {
+                    if let image = data.flatMap ({ UIImage(data: $0) }) {
+                        cacheManager.set(image: image, for: imageURL)
                         self.image = image
                     }
                 }
