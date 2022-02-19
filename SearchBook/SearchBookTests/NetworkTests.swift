@@ -53,7 +53,7 @@ class NetworkTests: XCTestCase {
     }
     
     func testBooksAPICallGetsComplete() throws {
-        let booksRequest: BooksReqeust = .init(isbn13: 9780131495050)
+        let booksRequest: BooksReqeust = .init(isbn13: "9780131495050")
         var booksResponse: BooksResponse?
         var networkError: NetworkError?
         let promise = expectation(description: "Complete")

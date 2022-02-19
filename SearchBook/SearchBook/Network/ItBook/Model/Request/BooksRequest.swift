@@ -9,5 +9,5 @@ import Foundation
 
 struct BooksReqeust {
     
-    let isbn13: Int
+    let isbn13: String
 }
