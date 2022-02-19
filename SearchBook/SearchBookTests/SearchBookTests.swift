@@ -44,7 +44,7 @@ class SearchBookTests: XCTestCase {
     func testQueryWithBindingGetsBooks() {
         var result: [Book] = []
         let promise = expectation(description: "Complete")
-        self.searchControllerViewModelProtocol.bind(newBooks: {
+        self.searchControllerViewModelProtocol.bind(books: {
             result = $0
             promise.fulfill()
         })
@@ -53,15 +53,4 @@ class SearchBookTests: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-    func testNewQueryWithBindingGetsIsNewTrue() {
-        var isNew: Bool = false
-        let promise = expectation(description: "Complete")
-        self.searchControllerViewModelProtocol.bind(newSearchFactor: {
-            isNew = $0.isNew
-            promise.fulfill()
-        })
-        self.searchTextFieldViewModel.action(.search("test"))
-        wait(for: [promise], timeout: 5)
-        XCTAssertTrue(isNew)
-    }
 }

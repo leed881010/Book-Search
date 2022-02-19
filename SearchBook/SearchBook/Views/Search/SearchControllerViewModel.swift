@@ -14,17 +14,13 @@ protocol BookListTableViewModel: AnyObject {
     
     func book(for indexPath: IndexPath) -> Book
     func didSelectRow(at indexPath: IndexPath)
+    func willDisplay(forRowAt indexPath: IndexPath)
 }
 
 protocol SearchControllerViewModelProtocol: AnyObject {
     
-    var books: [Book] { get }
-    
-    var newBooksHandler: (([Book]) -> Void)? { get }
-    var newSearchFactorHandler: ((SearchControllerViewModel.SearchFactor) -> Void)? { get }
-    
-    func bind(newSearchFactor handler: @escaping (SearchControllerViewModel.SearchFactor) -> Void)
-    func bind(newBooks handler: @escaping ([Book]) -> Void)
+    var booksHandler: (([Book]) -> Void)? { get }
+    func bind(books handler: @escaping ([Book]) -> Void)
 }
 
 final class SearchControllerViewModel {
@@ -35,7 +31,6 @@ final class SearchControllerViewModel {
         self.bind()
     }
     
-    
     private var itbookAPIConnector: ItBookAPIConnectorProtocol { NetworkDispatcher.shared.itbookAPIConnector }
     private var searchFactor: SearchFactor? {
         didSet {
@@ -44,9 +39,8 @@ final class SearchControllerViewModel {
     }
     
     
-    private(set) var books: [Book] = []
-    private(set) var newBooksHandler: (([Book]) -> Void)?
-    private(set) var newSearchFactorHandler: ((SearchFactor) -> Void)?
+    private var books: [Book] = []
+    private(set) var booksHandler: (([Book]) -> Void)?
 }
 
 private extension SearchControllerViewModel {
@@ -54,20 +48,21 @@ private extension SearchControllerViewModel {
     func didUpdate(searchFactor: SearchFactor) {
         if searchFactor.isNew {
             self.books.removeAll()
-            self.newSearchFactorHandler?(searchFactor)
         }
         self.search(factor: searchFactor)
     }
     
     func search(factor: SearchFactor) {
         let searchRequest: SearchRequest = .init(searchFactor: factor)
-        self.itbookAPIConnector.search(request: searchRequest) { [weak self] response, error in
-            if let error = error {
-                
-            } else if let response = response {
-                let books = response.books.compactMap { Book(searchBook: $0) }
-                self?.books.append(contentsOf: books)
-                self?.newBooksHandler?(books)
+        DispatchQueue.global(qos: .background).async {
+            self.itbookAPIConnector.search(request: searchRequest) { [weak self] response, error in
+                if let error = error {
+                    
+                } else if let response = response {
+                    let books = response.books.compactMap { Book(searchBook: $0) }
+                    self?.books.append(contentsOf: books)
+                    self?.booksHandler?(books)
+                }
             }
         }
     }
@@ -101,13 +96,20 @@ extension SearchControllerViewModel: BookListTableViewModel {
     func didSelectRow(at indexPath: IndexPath) {
         
     }
+    
+    func willDisplay(forRowAt indexPath: IndexPath) {
+        guard indexPath.row + 1 == self.books.count,
+              let searchFactor = self.searchFactor else { return }
+        
+        searchFactor.next()
+        self.didUpdate(searchFactor: searchFactor)
+    }
 }
 
 
 extension SearchControllerViewModel: SearchControllerViewModelProtocol {
     
-    func bind(newBooks handler: @escaping ([Book]) -> Void) { self.newBooksHandler = handler }
-    func bind(newSearchFactor handler: @escaping (SearchFactor) -> Void) { self.newSearchFactorHandler = handler }
+    func bind(books handler: @escaping ([Book]) -> Void) { self.booksHandler = handler }
 }
 
 extension SearchControllerViewModel {
@@ -123,8 +125,8 @@ extension SearchControllerViewModel {
             self.page = 1
         }
         
-        func update(page: Int) {
-            self.page = page
+        func next() {
+            self.page += 1
         }
     }
 }

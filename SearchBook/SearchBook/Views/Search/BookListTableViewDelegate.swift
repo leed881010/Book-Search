@@ -25,4 +25,8 @@ extension BookListTableViewDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         self.viewModel.heightForRow
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewModel.willDisplay(forRowAt: indexPath)
+    }
 }
