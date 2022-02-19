@@ -20,7 +20,7 @@ final class SearchTextField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let viewModel: SearchTextFieldViewModel
+    private unowned let viewModel: SearchTextFieldViewModel
     
     private lazy var textField: UITextField = {
         let textField: UITextField = .init()

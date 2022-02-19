@@ -24,7 +24,7 @@ final class SearchViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let viewModel: SearchControllerViewModelProtocol
+    private unowned let viewModel: SearchControllerViewModelProtocol
     private let searchTextField: SearchTextField
     private lazy var tableView: UITableView = {
         let tableView: UITableView = .init()
