@@ -34,7 +34,7 @@ final class SearchControllerViewModel {
     private var itbookAPIConnector: ItBookAPIConnectorProtocol { NetworkDispatcher.shared.itbookAPIConnector }
     private var books: [Book] = []
     private(set) var booksHandler: (([Book]) -> Void)?
-    
+    private(set) var pushableHandler: ((BaseNavigationViewModel.Pushable) -> Void)?
     private let searchFactorUpdater: SearchFactorUpdater = .init()
 }
 
@@ -95,7 +95,9 @@ extension SearchControllerViewModel: BookListTableViewModel {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        
+        let book = self.book(for: indexPath)
+        let viewModel: BookControllerViewModel = .init(initalData: BookControllerViewModel.InitialData(isbn13: book.isbn13))
+        self.pushableHandler?(.book(viewModel))
     }
     
     func willDisplay(forRowAt indexPath: IndexPath) {
@@ -108,4 +110,9 @@ extension SearchControllerViewModel: BookListTableViewModel {
 extension SearchControllerViewModel: SearchControllerViewModelProtocol {
     
     func bind(books handler: @escaping ([Book]) -> Void) { self.booksHandler = handler }
+}
+
+extension SearchControllerViewModel: BaseNavigationPushableProtocol {
+    
+    func bind(pushable handler: @escaping (BaseNavigationViewModel.Pushable) -> Void) { self.pushableHandler = handler }
 }
