@@ -9,8 +9,6 @@ import Foundation
 
 protocol SearchFactorUpdaterProtocol: AnyObject {
     
-    var page: Int { get }
-    
     func next()
     func update(query: String)
     func update(isLast: Bool)
@@ -22,14 +20,13 @@ protocol SearchFactorUpdaterProtocol: AnyObject {
 
 class SearchFactorUpdater {
     
-    var query: String = ""
-    
-    private(set) var page: Int = 1 {
+    private var page: Int = 1 {
         didSet {
             let request: SearchRequest? = self.isLast ? nil : SearchRequest(query: self.query, page: self.page)
             self.searchRequestHandler?(request)
         }
     }
+    private var query: String = ""
     private var isLast: Bool = false
     private(set) var searchRequestHandler: ((SearchRequest?) -> Void)?
 }
