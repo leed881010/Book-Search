@@ -11,4 +11,15 @@ struct SearchRequest {
     
     let query: String
     let page: Int
+    
+    init(query: String,
+         page: Int) {
+            self.query = query
+            self.page = page
+    }
+    
+    init(searchFactor: SearchControllerViewModel.SearchFactor) {
+        self.query = searchFactor.query
+        self.page = searchFactor.page
+    }
 }
